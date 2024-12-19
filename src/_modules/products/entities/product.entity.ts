@@ -1,5 +1,7 @@
-import { Entity, Column } from "typeorm";
+import { Column, Entity, ManyToMany } from "typeorm";
+
 import { AppEntity } from "../../../entities/app.entity.ts";
+import { Category } from "../../categories/entities/category.entity.ts";
 
 @Entity()
 export class Product extends AppEntity {
@@ -17,4 +19,7 @@ export class Product extends AppEntity {
 
   @Column()
   public imageUri: string;
+
+  @ManyToMany(() => Category, (c) => c.products)
+  public categories: Category[];
 }

@@ -13,7 +13,7 @@ export const catchError: Middleware = async (ctx, next) => {
   try {
     await next();
   } catch (error: any) {
-    console.log(error);
+    //console.log(error);
 
     if (error instanceof BaseError) {
       ctx.response.status = error.httpCode;
